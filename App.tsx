@@ -4,20 +4,28 @@ import ToolCard from './components/ToolCard';
 import { TOOLS } from './constants';
 import { LogoIcon, UserGroupIcon } from './components/icons';
 
-// Declare countapi on the window object for TypeScript
-declare const countapi: any;
-
 const App: React.FC = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
   useEffect(() => {
-    if (typeof countapi !== 'undefined') {
-      countapi.hit('thestrongmind.ai', 'visits').then((result: { value: number }) => {
-        setVisitorCount(result.value);
-      }).catch((error: any) => {
+    const fetchVisitorCount = async () => {
+      try {
+        const response = await fetch('https://api.counterapi.dev/v1/thestrongmind/visits/up');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        if (data && typeof data.count === 'number') {
+          setVisitorCount(data.count);
+        } else {
+            console.error("Invalid data from count API:", data);
+        }
+      } catch (error) {
         console.error("Failed to fetch visitor count:", error);
-      });
-    }
+      }
+    };
+
+    fetchVisitorCount();
   }, []);
 
   return (
