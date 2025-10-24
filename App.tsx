@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ToolCard from './components/ToolCard';
 import { TOOLS } from './constants';
@@ -11,7 +12,7 @@ const App: React.FC = () => {
       <div className="relative isolate min-h-screen flex flex-col">
         <header className="py-4 px-4 md:px-8">
           <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold leading-[1.2]">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">العقل القوي</span>
               <span className="text-slate-200"> للذكاء الاصطناعي</span>
             </h1>
@@ -26,7 +27,7 @@ const App: React.FC = () => {
               <div className="inline-block bg-indigo-500/10 text-indigo-300 text-sm font-semibold px-4 py-1 rounded-full mb-4">
                 مجموعة أدواتك الذكية والمتكاملة
               </div>
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-600 mb-12 drop-shadow-lg">
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.18] pb-[0.4em] bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-600 mb-12 drop-shadow-lg">
                 العقل القوي للذكاء الاصطناعي
               </h1>
               <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
