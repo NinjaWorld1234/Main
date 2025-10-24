@@ -1,10 +1,25 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ToolCard from './components/ToolCard';
 import { TOOLS } from './constants';
-import { LogoIcon } from './components/icons';
+import { LogoIcon, UserGroupIcon } from './components/icons';
+
+// Declare countapi on the window object for TypeScript
+declare const countapi: any;
 
 const App: React.FC = () => {
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (typeof countapi !== 'undefined') {
+      countapi.hit('thestrongmind.ai', 'visits').then((result: { value: number }) => {
+        setVisitorCount(result.value);
+      }).catch((error: any) => {
+        console.error("Failed to fetch visitor count:", error);
+      });
+    }
+  }, []);
+
   return (
     <div className="bg-slate-900 min-h-screen text-white">
       <div className="absolute top-0 left-0 w-full h-full bg-grid-slate-700/[0.05] [mask-image:linear-gradient(to_bottom,transparent,white)] transform translate-z-0"></div>
@@ -55,6 +70,12 @@ const App: React.FC = () => {
         <footer className="py-8 mt-12 border-t border-slate-800/50">
           <div className="container mx-auto text-center text-slate-500">
             <p>&copy; {new Date().getFullYear()} العقل القوي للذكاء الاصطناعي. جميع الحقوق محفوظة.</p>
+            <div className="flex items-center justify-center mt-4 space-x-2 space-x-reverse text-sm">
+              <UserGroupIcon className="h-5 w-5" />
+              <span>
+                عدد الزوار: {visitorCount !== null ? visitorCount.toLocaleString('ar-EG') : '...'}
+              </span>
+            </div>
           </div>
         </footer>
       </div>
