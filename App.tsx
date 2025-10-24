@@ -66,7 +66,7 @@ const App: React.FC = () => {
                 <p className="text-slate-400 mt-2">اختر الأداة المناسبة لمهمتك وانطلق نحو الإبداع.</p>
               </div>
               <div className="flex justify-center">
-                <div className="inline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div className="inline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {TOOLS.map((tool, index) => (
                     <ToolCard key={index} tool={tool} />
                   ))}

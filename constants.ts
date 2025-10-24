@@ -5,6 +5,7 @@ import {
   MicrophoneIcon,
   ClipboardListIcon,
   SearchIcon,
+  ChartBarIcon,
 } from './components/icons';
 
 export const TOOLS: Tool[] = [
@@ -44,5 +45,12 @@ export const TOOLS: Tool[] = [
     description: 'متخصص في البحث عن الدراسات العلمية المنتشرة على الأنترنت بطريقة احترافية',
     link: 'https://chatgpt.com/g/g-68ea086dcbc88191ae8e29674ee1b75e-jlb-lbhth-l-ql-lqwy',
     badge: 'GPT',
+  },
+  {
+    // FIX: Replaced JSX syntax with React.createElement because .ts files don't support JSX.
+    icon: React.createElement(ChartBarIcon, { className: "h-8 w-8 text-yellow-400" }),
+    title: 'الأنموذج القوي',
+    description: 'أداة ذكية لرسم أنموذج البحث العلمي من خلال تحليل عنوان البحث وربط متغيراته ببعضها بطريقة ذكية',
+    link: 'https://onmozaj2.vercel.app/',
   },
 ];
