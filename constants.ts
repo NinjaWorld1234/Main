@@ -37,4 +37,12 @@ export const TOOLS: Tool[] = [
     description: 'أداة انشاء أبحاث علمية ورسائل ماجستير أو دكتوراة قوية ومدعومة بالمصادر',
     link: 'https://strong-researcher.vercel.app/',
   },
+  {
+    // FIX: Replaced JSX syntax with React.createElement because .ts files don't support JSX.
+    icon: React.createElement(SearchIcon, { className: "h-8 w-8 text-sky-400" }),
+    title: 'جالب الأبحاث',
+    description: 'متخصص في البحث عن الدراسات العلمية المنتشرة على الأنترنت بطريقة احترافية',
+    link: 'https://chatgpt.com/g/g-68ea086dcbc88191ae8e29674ee1b75e-jlb-lbhth-l-ql-lqwy',
+    badge: 'GPT',
+  },
 ];

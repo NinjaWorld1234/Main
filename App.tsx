@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import ToolCard from './components/ToolCard';
 import { TOOLS } from './constants';
-import { LogoIcon, UserGroupIcon } from './components/icons';
+import { LogoIcon, UserGroupIcon, WhatsAppIcon } from './components/icons';
 
 const App: React.FC = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
@@ -66,10 +65,12 @@ const App: React.FC = () => {
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-100">صندوق الأدوات الذكي</h2>
                 <p className="text-slate-400 mt-2">اختر الأداة المناسبة لمهمتك وانطلق نحو الإبداع.</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                {TOOLS.map((tool, index) => (
-                  <ToolCard key={index} tool={tool} />
-                ))}
+              <div className="flex justify-center">
+                <div className="inline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                  {TOOLS.map((tool, index) => (
+                    <ToolCard key={index} tool={tool} />
+                  ))}
+                </div>
               </div>
             </div>
           </section>
@@ -83,6 +84,16 @@ const App: React.FC = () => {
               <span>
                 عدد الزوار: {visitorCount !== null ? visitorCount.toLocaleString('ar-EG') : '...'}
               </span>
+            </div>
+            <div className="flex items-center justify-center mt-6 space-x-10 text-base">
+                <a href="https://chat.whatsapp.com/Fau7WPNY7YF0pYpEEEoGUn" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 space-x-reverse hover:text-slate-300 transition-colors">
+                    <WhatsAppIcon className="h-6 w-6 text-green-500" />
+                    <span>انضم لمجموعتنا على واتساب</span>
+                </a>
+                <a href="https://wa.me/970593225370" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 space-x-reverse hover:text-slate-300 transition-colors">
+                    <WhatsAppIcon className="h-6 w-6 text-green-500" />
+                    <span>تواصل معنا</span>
+                </a>
             </div>
           </div>
         </footer>
