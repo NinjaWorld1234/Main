@@ -5,8 +5,15 @@ import { LogoIcon, UserGroupIcon, WhatsAppIcon } from './components/icons';
 
 const App: React.FC = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
+  const [showCounter, setShowCounter] = useState(false);
 
   useEffect(() => {
+    // إظهار العداد إذا كان عنوان URL يحتوي على ?admin=true
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('admin') === 'true') {
+      setShowCounter(true);
+    }
+
     const fetchVisitorCount = async () => {
       try {
         const response = await fetch('https://api.counterapi.dev/v1/thestrongmind/visits/up');
@@ -79,12 +86,14 @@ const App: React.FC = () => {
         <footer className="py-8 mt-12 border-t border-slate-800/50">
           <div className="container mx-auto text-center text-slate-500">
             <p>&copy; {new Date().getFullYear()} العقل القوي للذكاء الاصطناعي. جميع الحقوق محفوظة.</p>
-            <div className="flex items-center justify-center mt-4 space-x-2 space-x-reverse text-sm">
-              <UserGroupIcon className="h-5 w-5" />
-              <span>
-                عدد الزوار: {visitorCount !== null ? visitorCount.toLocaleString('ar-EG') : '...'}
-              </span>
-            </div>
+            {showCounter && (
+              <div className="flex items-center justify-center mt-4 space-x-2 space-x-reverse text-sm">
+                <UserGroupIcon className="h-5 w-5" />
+                <span>
+                  عدد الزوار: {visitorCount !== null ? visitorCount.toLocaleString('ar-EG') : '...'}
+                </span>
+              </div>
+            )}
             <div className="flex items-center justify-center mt-6 space-x-10 text-base">
                 <a href="https://chat.whatsapp.com/Fau7WPNY7YF0pYpEEEoGUn" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 space-x-reverse hover:text-slate-300 transition-colors">
                     <WhatsAppIcon className="h-6 w-6 text-green-500" />
